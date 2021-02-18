@@ -15,7 +15,8 @@ class SplitDataset():
         self.saved_test_dir = saved_dataset_dir+"/test"
         
         self.train_ratio = train_ratio
-        
+        if not os.path.exists(saved_dataset_dir):
+            os.mkdir(saved_dataset_dir)
         if not os.path.exists(self.saved_train_dir):
             os.mkdir(self.saved_train_dir)
         if not os.path.exists(self.saved_test_dir):
@@ -91,6 +92,8 @@ def create_file(dataset_dir,labels,number_files):
     None.
 
     """
+    if not os.path.exists(dataset_dir):
+            os.mkdir(dataset_dir)
     for item in labels:
         saved_dir = os.path.join(dataset_dir,item)
         if not os.path.exists(saved_dir):
